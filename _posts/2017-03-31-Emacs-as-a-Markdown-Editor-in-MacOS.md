@@ -5,7 +5,7 @@ date: 2017-03-31 14:46
 comments: true
 external-url:
 categories: 
-- Marakdown
+- Markdown
 tags: 
 - Emacs
 - Markdown
