@@ -79,7 +79,7 @@ To make your markdown editor more powerful, since the markdown-mode doesn't supp
 
 ------------------------------------**End**-------------------------------------  
 -----
-If you have already get here, **CONGRATULATION!!!**  
+If you have already gotten here, **CONGRATULATION!!!**  
 Now it should be possible for you to write markdown in your emacs enviroment.
 
 **Reference**
