@@ -88,7 +88,7 @@ To do this we need to integrate our Emacs with pandoc, a swiss-knife of converti
 If you have already gotten here, **CONGRATULATION!!!**  
 Now it should be possible for you to write markdown in your emacs enviroment.
 
-**Reference**
+## **Reference**
 1. [Emacs Markdown Mode](http://jblevins.org/projects/markdown-mode/)  
 2. [Pandoc](http://pandoc.org/)
 3. [Pandoc Mode](https://joostkremers.github.io/pandoc-mode/)
