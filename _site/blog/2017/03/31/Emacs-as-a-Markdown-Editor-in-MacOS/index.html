@@ -28,7 +28,7 @@
   <meta name="keywords" content="" />
 
   <link rel="canonical" href="http://localhost:4000/blog/2017/03/31/Emacs-as-a-Markdown-Editor-in-MacOS/">
-  <link rel="alternate" type="application/rss+xml" title="CIELO'S CODING ZONE" href="http://localhost:4000/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="CIELO'S ZONE<br>CODING,THINKING,RECORDING" href="http://localhost:4000/feed.xml" />
   <span itemprop='author'><meta name="author" content="Cielo Wu"><span itemprop='author'></span>
 
   <link href="/favicon.png" rel="icon">
@@ -87,93 +87,96 @@ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
           <p><strong>Introduction</strong><br />
 This page is intended to help you configure your Emacs into a good Markdown editor.</p>
 
-<p><strong>Requirements</strong></p>
+<h2 id="requirements"><strong>Requirements</strong></h2>
 
 <ul>
   <li>Emacs (Ver. &gt;= 24.5)</li>
   <li>Pandoc</li>
-  <li>eww</li>
+  <li>Eww (A built-in mode in Emacs if version &gt;= 24.5)</li>
 </ul>
 
-<p><strong>Procedure</strong></p>
+<h2 id="procedure"><strong>Procedure</strong></h2>
 
-<p><strong>IMPORTANT!!</strong> This instruction implicitly requires that you has already installed at least Emacs and understand the basic techniques of Emacs.<br />
+<p><strong>IMPORTANT!!</strong> This instruction implicitly requires that you has already installed at least Emacs(Ver. &gt;= 24.5) and understand the basic techniques of Emacs.<br />
 And,<br />
-<strong>Welcome to the Emacs World, hope you could enjoy it!</strong><br />
+<strong>Welcome to the Emacs World, hope you could enjoy it!</strong></p>
+
+<h3 id="install-markdown-mode"><strong>Install markdown-mode</strong></h3>
+
+<p>In Emacs, there already exists a mode for you edit the markdown file, namely <strong>markdown-mode</strong>. However, it’s not initially built in the Emacs installer. You have to install it by yourself.<br />
 <br /></p>
-<ul>
+<ol>
+  <li>Open the init file of your emacs(Usually under your home directory, which name likes .emacs or .emacs.d/init.el)</li>
   <li>
-    <p><strong>Install markdown-mode</strong><br />
-In Emacs, there already exists a package for you edit the markdown file <strong>markdown-mode</strong>, however its not initially built in the Emacs installer. You have to install it by yourself.</p>
+    <p>Append the following codes at last,</p>
 
-    <ol>
-      <li>Open the initial file of your emacs(Usually under your home directory, named with .emacs or init.el)</li>
-      <li>Edit the following code,
-        <div class="highlighter-rouge"><pre class="highlight"><code> (require 'package)  
- (add-to-list 'package-archives
-              '("melpa-stable" . "https://stable.melpa.org/packages/") t)  
- (package initialize)
+    <div class="highlighter-rouge"><pre class="highlight"><code>     (require 'package)
+     (add-to-list 'package-archives
+                  '("melpa-stable" . "https://stable.melpa.org/packages/") t)  
+     (package initialize)  
 </code></pre>
-        </div>
-      </li>
-      <li>
-        <p>Save the file and reopen an emacs, in the minibuffer input,</p>
-
-        <blockquote>
-          <p>M-x package-install RET markdown-mode RET</p>
-        </blockquote>
-      </li>
-      <li>
-        <p>Now open a .markdown/.md file to check if markdown is successfully installed.<br />
-    If successfully installed, the related markdown syntax has different faces, and you could use the following command <code class="highlighter-rouge">C-c C-c p</code> to show the .md/.markdown file in a webpage.</p>
-      </li>
-      <li><strong>ATTENTION:</strong> For more Installation Instructions, please go to <a href="http://jblevins.org/projects/markdown-mode/">Emacs Markdown Mode</a>.<br />
-<br /></li>
-    </ol>
+    </div>
   </li>
   <li>
-    <p><strong>Install pandoc, pandoc-mode</strong><br />
-To make your markdown editor more powerful, since the markdown-mode doesn’t support many syntax, for example, at first mine failed to interpret a table</p>
+    <p>Save the file and restart Emacs, and in the minibuffer input,</p>
+
+    <blockquote>
+      <p>M-x package-install RET markdown-mode RET</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Now open a .markdown/.md file to check if markdown has been successfully installed.<br />
+   If yes, the related markdown syntax will have different faces, and you could use the following command <code class="highlighter-rouge">C-c C-c p</code> to show the .md/.markdown file in a webpage.</p>
+  </li>
+  <li><strong>ATTENTION:</strong> For more Installation Instructions, please refer to <a href="http://jblevins.org/projects/markdown-mode/">Emacs Markdown Mode</a>.<br />
+<br /></li>
+</ol>
+
+<h3 id="install-pandoc-pandoc-mode"><strong>Install pandoc, pandoc-mode</strong></h3>
+
+<p>To make your markdown editor more powerful, i.e. support some markdown syntax which the markdown-mode doesn’t support. For example, it failed to interpret a table at first.<br />
+To do this we need to integrate our Emacs with pandoc, a swiss-knife of converting .md/.markdown text to .html.</p>
+
+<ol>
+  <li>
+    <p>On a MacOS, use the following command in a terminal (For other OS, please refer to <a href="http://pandoc.org/">Pandoc</a>),</p>
+
+    <blockquote>
+      <p>brew upadte<br />
+   brew install pandoc</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>The same as the former one while installing the markdown-mode, install the pandoc-mode,</p>
+
+    <blockquote>
+      <p>M-x package-install RET pandoc-mode RET</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Now customize the markdown-mode,</p>
 
     <ol>
       <li>
-        <p>In a MacOS, using the following command in a terminal(For other OS, please go to <a href="http://pandoc.org/">Pandoc</a>),</p>
+        <p>Under the markdown-mode, in the minibuffer input,</p>
 
         <blockquote>
-          <p>brew upadte<br />
-   brew install pandoc</p>
+          <p>customize-mode RET</p>
         </blockquote>
       </li>
+      <li>Search “<strong>Markdown Command</strong>” and change its value to the binary file of your pandoc (<code class="highlighter-rouge">which pandoc</code> in the terminal).</li>
       <li>
-        <p>The same as the former one while installing the markdown-mode, install the pandoc-mode,</p>
+        <p>In the meantime, enable the pandoc-mode in your markdown-mode by,</p>
 
         <blockquote>
-          <p>M-x package-install RET pandoc-mode RET</p>
+          <p>M-x pandoc-mode RET</p>
         </blockquote>
       </li>
+      <li>Check the result by command <code class="highlighter-rouge">C-c C-c l</code>, everthing should work fine now;</li>
       <li>
-        <p>Now customize the markdown-mode,</p>
+        <p>To avoid manually enable pandoc-mode everytime, we could automatically enbale the pandoc mode evey time when you open a .md file,</p>
 
         <ol>
-          <li>
-            <p>Under the markdown-mode, in the minibuffer input,</p>
-
-            <blockquote>
-              <p>customize-mode RET</p>
-            </blockquote>
-          </li>
-          <li>Search “<strong>Markdown Command</strong>” and change it value to the binary file of your pandoc(<code class="highlighter-rouge">which pandoc</code> in the terminal).</li>
-          <li>
-            <p>Enable the pandoc-mode in your markdown-mode by,</p>
-
-            <blockquote>
-              <p>M-x pandoc-mode RET</p>
-            </blockquote>
-          </li>
-          <li>Check the result by command <code class="highlighter-rouge">C-c C-c l</code></li>
-          <li>
-            <p>To automatically enbale the pandoc mode eveytime open a .md file</p>
-          </li>
           <li>
             <p>Open your init file and append,</p>
 
@@ -185,10 +188,10 @@ To make your markdown editor more powerful, since the markdown-mode doesn’t su
       </li>
     </ol>
   </li>
-</ul>
+</ol>
 
 <h2 id="end-">————————————<strong>End</strong>————————————-</h2>
-<p>If you have already get here, <strong>CONGRATULATION!!!</strong><br />
+<p>If you have already gotten here, <strong>CONGRATULATION!!!</strong><br />
 Now it should be possible for you to write markdown in your emacs enviroment.</p>
 
 <p><strong>Reference</strong></p>
@@ -212,11 +215,11 @@ Now it should be possible for you to write markdown in your emacs enviroment.</p
     <div class="row biography">
       <div class="col-sm-4">
         <h2>who am i</h2>
-        <p>I'm a student at Politecnico di Torino, Italy.</p>
+        <p>A student at Politecnico di Torino, Italy.</p>
       </div>
       <div class="col-sm-4">
         <h2>what is this</h2>
-        <p>This is a blog mainly about coding, I'm not sure what to write here though.</p>
+        <p>A blog mainly about coding, I'm not sure what to write here though.</p>
       </div>
       <div class="col-sm-4">
         <h2>where am i</h2>
