@@ -1,9 +1,9 @@
 # Site settings
 title: "CIELO'S ZONE<br>CODING,THINKING,RECORDING"
-author: "Cielo Wu"
-description: "A blog mainly about coding, I'm not sure what to write here though."
-keywords: "Programming, Machine-Learning, Artificial Intelligence, Statistics, Probability, History Books, Traveling, Puzzles"
-biography: "A student at University of Michigan, Ann Arbor"
+author: "Yutian Wu"
+description: "A place for me to record my life and thoughts."
+keywords: "Programming, Machine Learning, Data Science, Statistics, Probability, History, Traveling, Puzzles"
+biography: "A Master student at University of Michigan, Ann Arbor"
 colophon: "This site is hosted at <a href='https://pages.github.com/'>Github Pages</a> and created with <a href='http://jekyllrb.com/'>Jekyll</a>."
 
 baseurl: ""
@@ -12,7 +12,7 @@ url: ""
 #twitter_username: ""
 github_username: cielong
 facebook_username: cielo.yutian.wu
-linkedin_username: 
+linkedin_username: linkedin.com/in/cielowu
 
 simple_search: http://google.com/search
 markdown: kramdown
