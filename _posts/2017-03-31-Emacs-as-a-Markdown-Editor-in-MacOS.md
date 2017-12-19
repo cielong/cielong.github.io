@@ -5,10 +5,10 @@ date: 2017-03-31 14:46
 comments: true
 external-url:
 categories: 
-- Markdown
+- Emacs
 tags: 
 - Emacs
-- Markdown
+- Markdown-mode
 - pandoc
 ---
 
@@ -31,8 +31,8 @@ And,
 
 In Emacs, there already exists a mode for you edit the markdown file, namely **markdown-mode**. However, it's not initially built in the Emacs installer. You have to install it by yourself.  
 <br>
-1. Open the init file of your emacs(Usually under your home directory, which name likes .emacs or .emacs.d/init.el)  
-2. Append the following codes at last,  
+1. Open the init file of your emacs (Usually under your home directory, which name likes .emacs or .emacs.d/init.el or if you like you could set your own specific language init-file)  
+2. Append the following codes at last (if you have not, [melpa](https://melpa.org/#/) is the most popular package repo for emacs user),  
 	
 	```
 	    (require 'package)
@@ -56,7 +56,7 @@ In Emacs, there already exists a mode for you edit the markdown file, namely **m
 To make your markdown editor more powerful, i.e. support some markdown syntax which the markdown-mode doesn't support. For example, it failed to interpret a table at first.  
 To do this we need to integrate our Emacs with pandoc, a swiss-knife of converting .md/.markdown text to .html.
 
-1. On a MacOS, use the following command in a terminal (For other OS, please refer to [Pandoc](http://pandoc.org/)),  
+1. On a MacOS (after Sierra), use the following command in a terminal (For other OS, please refer to [Pandoc](http://pandoc.org/)),  
 	
 	> brew upadte  
 	  brew install pandoc  
