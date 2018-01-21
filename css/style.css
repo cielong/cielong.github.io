@@ -1,5 +1,5 @@
 /* Default */
-html {
+* {
   box-sizing: border-box;
 }
 
@@ -41,7 +41,7 @@ header {
   position: relative;
   transform: translateY(+30%);
   text-align: right;
-  font-family: Joti One;
+  font-family: "Joti One";
 }
 
 /* Main */
@@ -79,16 +79,16 @@ main {
 }
 
 #first-image {
-  background-image: url("../img/header.jpg");
+  background-image: url(../img/header.jpg);
 }
 
 #seconde-image {
-  background-image: url("../img/header2.jpg");
+  background-image: url(../img/header2.jpg);
 }
 
 /* Featured Work */
 #featured-work-title {
-  font-family: Patua One;
+  font-family: "Patua One";
 }
 
 /* Figure */
@@ -105,7 +105,7 @@ main {
 }
 
 .photo figcaption {
-  font-family: Berkshire Swash;
+  font-family: "Berkshire Swash";
   font-size: 2em;
   text-align: center;
   margin-bottom: 1em;
@@ -156,7 +156,7 @@ main {
   color: #ccc;
   padding: 10px 0;
   height: 150px;
-  font-family: Berkshire Swash;
+  font-family: "Berkshire Swash";
 }
 
 /* Add Animation */
