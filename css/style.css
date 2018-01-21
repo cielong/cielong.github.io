@@ -1,3 +1,9 @@
+/* 
+  This is the stylesheet the index.html is using, and it has some of the codes from 
+  W3-school to create modal image, particularly most of the part in the modal and close 
+  part are copied with a little changed.
+*/
+
 html {
   box-sizing: border-box;
 }
@@ -6,8 +12,6 @@ body{
   font-family: sans-serif;
   padding-top: 65px;
 }
-
-/* Navbar */
 
 /* Header */
 header {
@@ -119,7 +123,7 @@ figure {
   opacity: 0.7;
 }
 
-/* The Modal (background) */
+/* The Modal (background) @W3-school https://www.w3schools.com/howto/howto_css_modal_images.asp */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
