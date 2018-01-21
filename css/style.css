@@ -78,11 +78,11 @@ main {
   100% {opacity: 0;}
 }
 
-#first {
+#first-image {
   background-image: url("../img/header.jpg");
 }
 
-#seconde {
+#seconde-image {
   background-image: url("../img/header2.jpg");
 }
 
