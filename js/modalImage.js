@@ -1,3 +1,5 @@
+/* This function is copied from W3 school[https://www.w3schools.com/howto/howto_css_modal_images.asp] with little modification
+*/
 function showimage(imageId) {
     var img = document.getElementById(imageId);
     var modal = document.getElementById('modal-img');
