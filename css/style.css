@@ -1,12 +1,17 @@
+/* Default */
 html {
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: sans-serif;
   padding-top: 65px;
 }
 
+.clear-margin {
+  margin: 0;
+  padding: 0;
+}
 /* Navbar */
 
 /* Header */
@@ -46,61 +51,48 @@ main {
 }
 
 /* Cover */
-section.cover {
+.cover {
   margin-top: 1em;
   overflow: hidden;
   margin-bottom: 2em;
   border-radius: 1%;
 }
 
-.cover img {
-  position: relative;
-  width: 100%;
-  margin: -9% auto;
-}
-
-#cover-img-1 {
+.cover-image {
   padding-top: 54.166666666667%;
-  background-image: url("../img/header.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  animation:fading 11s infinite;
+  animation: fading 11s infinite;
 }
 
-#cover-img-2 {
-  padding-top: 54.166666666667%;
-  background-image: url("../img/header2.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: relative;
-  animation:fading 11s infinite;
+@-webkit-keyframes fading {
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
 }
 
 @keyframes fading {
-  0% {opacity:0}
-  50% {opacity:1}
-  100%{opacity:0;}
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
 }
 
-.badge {
-  height: 13px;
-  width: 13px;
-  padding: 0;
+#first {
+  background-image: url("../img/header.jpg");
+}
+
+#seconde {
+  background-image: url("../img/header2.jpg");
 }
 
 /* Featured Work */
-h2#featured-work-title {
+#featured-work-title {
   font-family: Patua One;
 }
 
 /* Figure */
-figure {
-  padding: 0px;
-}
-
 .photo img {
   vertical-align: center;
   margin: auto;
@@ -109,14 +101,15 @@ figure {
   cursor: pointer;
 }
 
+.photo img:hover {
+  opacity: 0.7;
+}
+
 .photo figcaption {
   font-family: Berkshire Swash;
   font-size: 2em;
   text-align: center;
-}
-
-.photo img:hover {
-  opacity: 0.7;
+  margin-bottom: 1em;
 }
 
 /* The Modal (background) */
@@ -137,8 +130,8 @@ figure {
 .modal-fig {
   display: block;
   position: absolute;
-  top:60%;
-  left:50%;
+  top: 60%;
+  left: 50%;
   width: 100%;
   transform: translate(-50%, -50%) !important;
 }
@@ -175,13 +168,13 @@ figure {
 }
 
 @-webkit-keyframes zoom {
-  from {-webkit-transform:scale(0)}
-  to {-webkit-transform:scale(1)}
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
 }
 
 @keyframes zoom {
-  from {transform:scale(0)}
-  to {transform:scale(1)}
+  from {transform: scale(0)}
+  to {transform: scale(1)}
 }
 
 /* The Close Button */
@@ -204,18 +197,9 @@ figure {
 }
 
 /* Footer */
-footer {
-  padding-top: 1em;
-  border-top: 1px solid #7d97ad;
-}
-
-.footer-section p {
+.footer-section {
   font-size: 0.8em;
   text-align: center;
-  padding-top: 1em;
-}
-
-.clear-margin {
-  margin: 0;
-  padding: 0;
+  padding: 1em 0 2em;
+  border-top: 1px solid #7d97ad;
 }
