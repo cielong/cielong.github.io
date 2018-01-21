@@ -83,6 +83,10 @@ To do this we need to integrate our Emacs with pandoc, a swiss-knife of converti
 		
 			> (add-hook 'markdown-mode-hook 'pandoc-mode)  
 
+### **Syntax Checking**  
+
+1.
+
 ------------------------------------**End**-------------------------------------  
 -----
 If you have already gotten here, **CONGRATULATION!!!**  

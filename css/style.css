@@ -1,0 +1,220 @@
+html {
+  box-sizing: border-box;
+}
+
+body{
+  font-family: sans-serif;
+  padding-top: 65px;
+}
+
+/* Navbar */
+
+/* Header */
+header {
+  margin-bottom: 2em;
+}
+
+.header-section {
+  padding-bottom: 1em;
+  border-bottom: 5px solid #7d97ad;
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #header-logo {
+    width: 100%;
+    position: relative;
+    padding-top: 1.0em;
+  }
+}
+
+#header-logo {
+  width: 100%;
+  position: relative;
+  transform: translateY(+20%);
+}
+
+#header-text {
+  position: relative;
+  transform: translateY(+30%);
+  text-align: right;
+  font-family: Joti One;
+}
+
+/* Main */
+main {
+  margin-top: 1em;
+}
+
+/* Cover */
+section.cover {
+  margin-top: 1em;
+  overflow: hidden;
+  margin-bottom: 2em;
+  border-radius: 1%;
+}
+
+.cover img {
+  position: relative;
+  width: 100%;
+  margin: -9% auto;
+}
+
+#cover-img-1 {
+  padding-top: 54.166666666667%;
+  background-image: url("../img/header.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  animation:fading 11s infinite;
+}
+
+#cover-img-2 {
+  padding-top: 54.166666666667%;
+  background-image: url("../img/header2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  animation:fading 11s infinite;
+}
+
+@keyframes fading {
+  0% {opacity:0}
+  50% {opacity:1}
+  100%{opacity:0;}
+}
+
+.badge {
+  height: 13px;
+  width: 13px;
+  padding: 0;
+}
+
+/* Featured Work */
+h2#featured-work-title {
+  font-family: Patua One;
+}
+
+/* Figure */
+figure {
+  padding: 0px;
+}
+
+.photo img {
+  vertical-align: center;
+  margin: auto;
+  min-height: 280px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.photo figcaption {
+  font-family: Berkshire Swash;
+  font-size: 2em;
+  text-align: center;
+}
+
+.photo img:hover {
+  opacity: 0.7;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 50px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.modal-fig {
+  display: block;
+  position: absolute;
+  top:60%;
+  left:50%;
+  width: 100%;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 800px;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+  font-family: Berkshire Swash;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)}
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1 !important;
+  font-size: 48px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #fff !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  padding-top: 1em;
+  border-top: 1px solid #7d97ad;
+}
+
+.footer-section p {
+  font-size: 0.8em;
+  text-align: center;
+  padding-top: 1em;
+}
+
+.clear-margin {
+  margin: 0;
+  padding: 0;
+}
