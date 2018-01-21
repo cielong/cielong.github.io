@@ -1,3 +1,8 @@
+/*
+  This script is copied and modified from W3 school 
+  [https://www.w3schools.com/howto/howto_css_modal_images.asp] with modification;
+*/
+
 var slideIndex = 1;
 slideDivs();
 
