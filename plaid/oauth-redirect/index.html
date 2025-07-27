@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrackIt - Account Connected Successfully</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            max-width: 400px;
+        }
+        .checkmark {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounceIn 0.6s ease-out;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .fallback {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        button {
+            background: white;
+            color: #4CAF50;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        .debug {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.8em;
+            text-align: left;
+            display: none;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .status {
+            margin: 1rem 0;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="checkmark">✅</div>
+        <h2>Bank Account Connected!</h2>
+        <div class="spinner" id="spinner"></div>
+        <div class="status" id="status">Redirecting you back to TrackIt...</div>
+        
+        <div class="fallback" id="fallback" style="display: none;">
+            <p>If you're not redirected automatically:</p>
+            <button onclick="openApp()">Open TrackIt App</button>
+            <button onclick="toggleDebug()" style="background: transparent; color: white; border: 1px solid white;">
+                Debug Info
+            </button>
+        </div>
+        
+        <div class="debug" id="debug">
+            <strong>Debug Information:</strong><br>
+            <span id="debugInfo"></span>
+        </div>
+    </div>
+
+    <script>
+        console.log('🔗 TrackIt OAuth Redirect Handler Started');
+        console.log('Current URL:', window.location.href);
+        
+        // Extract OAuth parameters from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const fragment = new URLSearchParams(window.location.hash.substring(1));
+        
+        // Combine query params and fragment params
+        const allParams = new URLSearchParams();
+        for (const [key, value] of urlParams) {
+            allParams.append(key, value);
+        }
+        for (const [key, value] of fragment) {
+            allParams.append(key, value);
+        }
+        
+        // Log all parameters for debugging
+        console.log('📝 OAuth Parameters received:');
+        for (const [key, value] of allParams) {
+            console.log(`  ${key}:`, value);
+        }
+        
+        // Build the custom URL scheme redirect
+        const appUrl = `trackit://plaid/oauth-redirect?${allParams.toString()}`;
+        console.log('📱 App redirect URL:', appUrl);
+        
+        function openApp() {
+            console.log('🚀 Manual app open triggered');
+            window.location.href = appUrl;
+        }
+        
+        function toggleDebug() {
+            const debugEl = document.getElementById('debug');
+            const debugInfo = document.getElementById('debugInfo');
+            
+            debugInfo.innerHTML = `
+                <strong>Current URL:</strong><br>
+                ${window.location.href}<br><br>
+                
+                <strong>App Redirect URL:</strong><br>
+                ${appUrl}<br><br>
+                
+                <strong>Parameters:</strong><br>
+                ${JSON.stringify(Object.fromEntries(allParams), null, 2)}<br><br>
+                
+                <strong>Raw URL Parts:</strong><br>
+                Search: ${window.location.search}<br>
+                Hash: ${window.location.hash}
+            `;
+            
+            debugEl.style.display = debugEl.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        // Update status and try redirect
+        document.getElementById('status').textContent = 'Preparing redirect...';
+        
+        // Try to redirect after a short delay
+        setTimeout(() => {
+            console.log('🎯 Attempting app redirect...');
+            document.getElementById('status').textContent = 'Opening TrackIt app...';
+            window.location.href = appUrl;
+        }, 2000);
+        
+        // Show fallback options after 5 seconds
+        setTimeout(() => {
+            console.log('⏰ Showing fallback options');
+            document.getElementById('spinner').style.display = 'none';
+            document.getElementById('status').textContent = 'Need help getting back to the app?';
+            document.getElementById('fallback').style.display = 'block';
+        }, 5000);
+        
+        // Additional fallback - try opening app again after 8 seconds
+        setTimeout(() => {
+            console.log('🔄 Secondary redirect attempt');
+            window.location.href = appUrl;
+        }, 8000);
+    </script>
+</body>
+</html>
