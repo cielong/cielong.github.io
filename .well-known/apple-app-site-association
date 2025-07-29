@@ -1,0 +1,22 @@
+{
+    "applinks": {
+        "details": [
+            {
+                "appIDs": ["B7Z3B5R3T5.com.yutianwu.trackit"],
+                "components": [
+                    {
+                        "/": "/trackit/share",
+                        "comment": "TrackIt CloudKit household sharing"
+                    },
+                    {
+                        "/": "/plaid/oauth-redirect",
+                        "comment": "Plaid OAuth redirect for TrackIt"
+                    }
+                ]
+            }
+        ]
+    },
+    "webcredentials": {
+        "apps": ["B7Z3B5R3T5.com.yutianwu.trackit"]
+    }
+}

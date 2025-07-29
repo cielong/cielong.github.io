@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Household on TrackIt</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+            font-weight: bold;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 16px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .household-name {
+            color: #667eea;
+            font-weight: 700;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .app-store-button {
+            display: inline-block;
+            margin-top: 24px;
+        }
+        .app-store-button img {
+            height: 60px;
+        }
+        .loading {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        .fallback-link {
+            margin-top: 24px;
+            padding: 12px 24px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        .fallback-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .fallback-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">T</div>
+        <h1>Join <span class="household-name" id="household-name">Household</span> on TrackIt</h1>
+        
+        <div id="loading-message" class="loading">
+            Opening TrackIt app...
+        </div>
+        
+        <p>You've been invited to join a household on TrackIt for collaborative financial tracking.</p>
+        
+        <p>If the app doesn't open automatically, please make sure you have TrackIt installed on your device.</p>
+        
+        <div class="app-store-button">
+            <a href="https://apps.apple.com/app/trackit" target="_blank">
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+            </a>
+        </div>
+        
+        <div class="fallback-link" id="fallback-section" style="display: none;">
+            <p><strong>Having trouble?</strong></p>
+            <p>You can also try opening the invitation directly:</p>
+            <a href="#" id="direct-link" target="_blank">Open CloudKit Invitation</a>
+        </div>
+    </div>
+
+    <script>
+        // Extract parameters from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const cloudKitUrl = urlParams.get('url');
+        const household = urlParams.get('household');
+        
+        // Update household name if provided
+        if (household) {
+            const householdElement = document.getElementById('household-name');
+            householdElement.textContent = decodeURIComponent(household);
+        }
+        
+        // Set up fallback link if CloudKit URL is available
+        if (cloudKitUrl) {
+            const directLink = document.getElementById('direct-link');
+            directLink.href = decodeURIComponent(cloudKitUrl);
+            
+            // Show fallback section after a delay
+            setTimeout(() => {
+                document.getElementById('loading-message').style.display = 'none';
+                document.getElementById('fallback-section').style.display = 'block';
+            }, 3000);
+        } else {
+            // Hide loading message if no CloudKit URL
+            setTimeout(() => {
+                document.getElementById('loading-message').style.display = 'none';
+            }, 2000);
+        }
+        
+        // Attempt to redirect to app scheme as fallback
+        // This won't work for Universal Links but provides additional fallback
+        if (cloudKitUrl && household) {
+            const appSchemeUrl = `trackit://share/cloudkit?shareURL=${encodeURIComponent(cloudKitUrl)}&householdName=${encodeURIComponent(household)}`;
+            
+            // Try to open app scheme after a short delay
+            setTimeout(() => {
+                window.location.href = appSchemeUrl;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
