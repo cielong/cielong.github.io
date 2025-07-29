@@ -9,7 +9,7 @@
                         "comment": "TrackIt CloudKit household sharing"
                     },
                     {
-                        "/": "/plaid/oauth-redirect",
+                        "/": "/trackit/plaid/oauth-redirect",
                         "comment": "Plaid OAuth redirect for TrackIt"
                     }
                 ]
